@@ -1,18 +1,19 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.kapt")
     id("kotlin-parcelize")
     id("com.google.gms.google-services")
 }
 
 android {
     namespace = "hr.tvz.android.fragmentistjepanovic"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "hr.tvz.android.fragmentistjepanovic"
-        minSdk = 35
-        targetSdk = 35
+        minSdk = 34
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -49,4 +50,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.messaging.ktx)
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
 }

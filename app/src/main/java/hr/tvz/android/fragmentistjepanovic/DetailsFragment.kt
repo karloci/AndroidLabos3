@@ -10,6 +10,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
+import androidx.room.Room
+import hr.tvz.android.fragmentistjepanovic.model.Database
+import hr.tvz.android.fragmentistjepanovic.model.Instrument
+import hr.tvz.android.fragmentistjepanovic.model.InstrumentDao
 
 class DetailsFragment : Fragment() {
     override fun onCreateView(
@@ -32,7 +36,10 @@ class DetailsFragment : Fragment() {
 
         if (instrument != null) {
             nameView.text = instrument.name
-            imageView.setImageResource(instrument.image)
+
+            val resId = requireContext().applicationContext.resources.getIdentifier(instrument.image, "drawable", requireContext().applicationContext.packageName)
+            imageView.setImageResource(resId)
+
             webButton.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, instrument.url.toUri())
                 startActivity(intent)
@@ -41,5 +48,4 @@ class DetailsFragment : Fragment() {
             detailsLayout.visibility = View.GONE
         }
     }
-
 }
