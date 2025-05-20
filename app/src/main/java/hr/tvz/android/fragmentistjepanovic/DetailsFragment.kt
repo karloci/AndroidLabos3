@@ -23,19 +23,23 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val instrument = arguments?.getParcelable<Instrument>("instrument")
-        if (instrument != null) {
-            val nameView = view.findViewById<TextView>(R.id.instrumentName)
-            val imageView = view.findViewById<ImageView>(R.id.instrumentImage)
-            val webButton = view.findViewById<Button>(R.id.webButton)
+        val nameView = view.findViewById<TextView>(R.id.instrumentName)
+        val imageView = view.findViewById<ImageView>(R.id.instrumentImage)
+        val webButton = view.findViewById<Button>(R.id.webButton)
+        val detailsLayout = view.findViewById<View>(R.id.detailsLayout)
 
+        val instrument = arguments?.getParcelable<Instrument>("instrument")
+
+        if (instrument != null) {
             nameView.text = instrument.name
             imageView.setImageResource(instrument.image)
             webButton.setOnClickListener {
-                val url = instrument.url
-                val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                val intent = Intent(Intent.ACTION_VIEW, instrument.url.toUri())
                 startActivity(intent)
             }
+        } else {
+            detailsLayout.visibility = View.GONE
         }
     }
+
 }
