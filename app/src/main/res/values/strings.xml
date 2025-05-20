@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FragmentiStjepanović</string>
+    <string name="harpsichord">Harpsichord</string>
+    <string name="accordion">Accordion</string>
+    <string name="lute">Lute</string>
+    <string name="organ">Organ</string>
+    <string name="violin">Violin</string>
+    <string name="share">Share</string>
+    <string name="wikipedia">Wikipedia</string>
+</resources>
