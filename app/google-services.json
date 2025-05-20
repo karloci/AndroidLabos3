@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "644837167099",
+    "project_id": "androidstjepanovic",
+    "storage_bucket": "androidstjepanovic.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644837167099:android:b6c9e884e8890fddda855e",
+        "android_client_info": {
+          "package_name": "hr.tvz.android.fragmentistjepanovic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAREsaI_y-y518wTV7tuBHG5qowW-Ah50I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
