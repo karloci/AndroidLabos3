@@ -1,5 +1,6 @@
 package hr.tvz.android.fragmentistjepanovic
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -13,6 +14,16 @@ import androidx.recyclerview.widget.RecyclerView
 class ListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var instrumentsList: ArrayList<Instrument>
+    private lateinit var callback: OnInstrumentSelectedListener
+
+    interface OnInstrumentSelectedListener {
+        fun onInstrumentSelected(instrument: Instrument)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callback = context as OnInstrumentSelectedListener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +48,7 @@ class ListFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = InstrumentAdapter(instrumentsList) { instrument ->
-
+            callback.onInstrumentSelected(instrument)
         }
     }
 }
