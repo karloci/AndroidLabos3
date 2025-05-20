@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 
-class InstrumentAdapter(private val instrumentsList: ArrayList<Instrument>): RecyclerView.Adapter<InstrumentAdapter.InstrumentViewHolder>() {
+class InstrumentAdapter(private val instrumentsList: ArrayList<Instrument>, private val onInstrumentClick: (Instrument) -> Unit): RecyclerView.Adapter<InstrumentAdapter.InstrumentViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstrumentViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.instrument_item, parent, false)
         return InstrumentViewHolder(itemView)
@@ -21,6 +21,10 @@ class InstrumentAdapter(private val instrumentsList: ArrayList<Instrument>): Rec
         val currentInstrument = instrumentsList[position]
         holder.instrumentImage.setImageResource(currentInstrument.image)
         holder.instrumentName.text = currentInstrument.name
+
+        holder.itemView.setOnClickListener {
+            onInstrumentClick(currentInstrument)
+        }
     }
 
     class InstrumentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)

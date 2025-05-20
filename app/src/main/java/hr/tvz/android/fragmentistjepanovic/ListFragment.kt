@@ -1,5 +1,7 @@
 package hr.tvz.android.fragmentistjepanovic
 
+import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,12 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ListFragment : Fragment() {
-    private lateinit var adapter: InstrumentAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var instrumentsList: ArrayList<Instrument>
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_list, container, false)
@@ -31,11 +33,11 @@ class ListFragment : Fragment() {
             Instrument(getString(R.string.violin), "https://en.wikipedia.org/wiki/Violin", R.drawable.violin),
         )
 
-        val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.instrumentsList)
-        recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter = InstrumentAdapter(instrumentsList)
-        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = InstrumentAdapter(instrumentsList) { instrument ->
+
+        }
     }
 }
