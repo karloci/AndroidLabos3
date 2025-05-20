@@ -1,12 +1,15 @@
 package hr.tvz.android.fragmentistjepanovic
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 
 class DetailsFragment : Fragment() {
     override fun onCreateView(
@@ -24,9 +27,15 @@ class DetailsFragment : Fragment() {
         if (instrument != null) {
             val nameView = view.findViewById<TextView>(R.id.instrumentName)
             val imageView = view.findViewById<ImageView>(R.id.instrumentImage)
+            val webButton = view.findViewById<Button>(R.id.webButton)
 
             nameView.text = instrument.name
             imageView.setImageResource(instrument.image)
+            webButton.setOnClickListener {
+                val url = instrument.url
+                val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                startActivity(intent)
+            }
         }
     }
 }
