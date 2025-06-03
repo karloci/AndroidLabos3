@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
+import com.facebook.drawee.view.SimpleDraweeView
 import hr.tvz.android.mvpstjepanovic.R
 import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
 
@@ -26,7 +27,7 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val nameView = view.findViewById<TextView>(R.id.instrumentName)
-        val imageView = view.findViewById<ImageView>(R.id.instrumentImage)
+        val imageView = view.findViewById<SimpleDraweeView>(R.id.instrumentImage)
         val webButton = view.findViewById<Button>(R.id.webButton)
         val detailsLayout = view.findViewById<View>(R.id.detailsLayout)
 
@@ -34,9 +35,7 @@ class DetailsFragment : Fragment() {
 
         if (instrument != null) {
             nameView.text = instrument.name
-
-            val resId = requireContext().applicationContext.resources.getIdentifier(instrument.imageUrl, "drawable", requireContext().applicationContext.packageName)
-            imageView.setImageResource(resId)
+            imageView.setImageURI(instrument.imageUrl)
 
             webButton.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, instrument.wikipediaUrl.toUri())

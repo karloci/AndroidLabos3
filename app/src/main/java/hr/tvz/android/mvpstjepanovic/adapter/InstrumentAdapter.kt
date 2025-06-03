@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.imageview.ShapeableImageView
 import hr.tvz.android.mvpstjepanovic.R
 import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
 
 class InstrumentAdapter(
     private val context: Context,
-    private val instrumentsList: ArrayList<Instrument>,
+    private val instrumentsList: List<Instrument>,
     private val onInstrumentClick: (Instrument) -> Unit
 ): RecyclerView.Adapter<InstrumentAdapter.InstrumentViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstrumentViewHolder {
@@ -27,9 +28,7 @@ class InstrumentAdapter(
     override fun onBindViewHolder(holder: InstrumentViewHolder, position: Int) {
         val currentInstrument = instrumentsList[position]
 
-        val resId = context.resources.getIdentifier(currentInstrument.imageUrl, "drawable", context.packageName)
-
-        holder.instrumentImage.setImageResource(resId)
+        holder.instrumentImage.setImageURI(currentInstrument.imageUrl)
         holder.instrumentName.text = currentInstrument.name
 
         holder.itemView.setOnClickListener {
@@ -39,7 +38,7 @@ class InstrumentAdapter(
 
     class InstrumentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
-        val instrumentImage: ShapeableImageView = itemView.findViewById(R.id.instrumentImage)
+        val instrumentImage: SimpleDraweeView = itemView.findViewById(R.id.instrumentImage)
         val instrumentName: TextView = itemView.findViewById(R.id.instrumentName)
     }
 }

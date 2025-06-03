@@ -6,16 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.collectAsState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import hr.tvz.android.mvpstjepanovic.adapter.InstrumentAdapter
 import hr.tvz.android.mvpstjepanovic.R
 import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
+import hr.tvz.android.mvpstjepanovic.instrument.viewmodel.InstrumentViewModel
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var instrumentsList: ArrayList<Instrument>
+    private lateinit var instrumentsList: List<Instrument>
     private lateinit var callback: OnInstrumentSelectedListener
+
+    private val viewModel: InstrumentViewModel by viewModels()
 
     interface OnInstrumentSelectedListener {
         fun onInstrumentSelected(instrument: Instrument)
@@ -37,39 +48,23 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        instrumentsList = ArrayList<Instrument>()
-
         recyclerView = view.findViewById(R.id.instrumentsList)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = InstrumentAdapter(view.context, instrumentsList) { instrument ->
-            callback.onInstrumentSelected(instrument)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.instruments.collect { instrumentsList ->
+                    instrumentsList.forEach { instrument ->
+                        println(instrument.name)
+                    }
+
+                    recyclerView.adapter = InstrumentAdapter(requireContext(), instrumentsList) { instrument ->
+                        callback.onInstrumentSelected(instrument)
+                    }
+                }
+            }
         }
-    }
 
-    fun insertAll() {
-        val instrumentNamesList = arrayListOf(
-            getString(R.string.harpsichord),
-            getString(R.string.accordion),
-            getString(R.string.lute),
-            getString(R.string.organ),
-            getString(R.string.violin),
-        )
-
-        val instrumentUrlsList = arrayListOf(
-            "https://en.wikipedia.org/wiki/Harpsichord",
-            "https://en.wikipedia.org/wiki/Accordion",
-            "https://en.wikipedia.org/wiki/Lute",
-            "https://en.wikipedia.org/wiki/Organ_(music)",
-            "https://en.wikipedia.org/wiki/Violin",
-        )
-
-        val instrumentImagesList = arrayListOf(
-            "harpsichord",
-            "accordion",
-            "lute",
-            "organ",
-            "violin",
-        )
     }
 }

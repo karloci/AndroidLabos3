@@ -15,10 +15,11 @@
         android:gravity="center_horizontal"
         tools:ignore="UselessParent">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/instrumentImage"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop" />
 
         <TextView
