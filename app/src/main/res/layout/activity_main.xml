@@ -17,7 +17,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView3"
-            android:name="hr.tvz.android.fragmentistjepanovic.ListFragment"
+            android:name="hr.tvz.android.fragmentistjepanovic.fragment.ListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>

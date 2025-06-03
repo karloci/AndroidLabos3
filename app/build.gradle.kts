@@ -1,19 +1,20 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("org.jetbrains.kotlin.kapt")
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.dagger)
     id("kotlin-parcelize")
-    id("com.google.gms.google-services")
+    kotlin("kapt")
 }
 
 android {
     namespace = "hr.tvz.android.fragmentistjepanovic"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "hr.tvz.android.fragmentistjepanovic"
-        minSdk = 34
-        targetSdk = 34
+        minSdk = 21
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -39,17 +40,35 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.firebase.bom))
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.security.crypto)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.firebase.analytics)
-    implementation(libs.firebase.messaging.ktx)
-    implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+    kapt(libs.hilt.android.compiler)
 }

@@ -1,4 +1,4 @@
-package hr.tvz.android.fragmentistjepanovic
+package hr.tvz.android.fragmentistjepanovic.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,10 +10,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
-import androidx.room.Room
-import hr.tvz.android.fragmentistjepanovic.model.Database
+import hr.tvz.android.fragmentistjepanovic.R
 import hr.tvz.android.fragmentistjepanovic.model.Instrument
-import hr.tvz.android.fragmentistjepanovic.model.InstrumentDao
 
 class DetailsFragment : Fragment() {
     override fun onCreateView(
@@ -37,11 +35,11 @@ class DetailsFragment : Fragment() {
         if (instrument != null) {
             nameView.text = instrument.name
 
-            val resId = requireContext().applicationContext.resources.getIdentifier(instrument.image, "drawable", requireContext().applicationContext.packageName)
+            val resId = requireContext().applicationContext.resources.getIdentifier(instrument.imageUrl, "drawable", requireContext().applicationContext.packageName)
             imageView.setImageResource(resId)
 
             webButton.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, instrument.url.toUri())
+                val intent = Intent(Intent.ACTION_VIEW, instrument.wikipediaUrl.toUri())
                 startActivity(intent)
             }
         } else {

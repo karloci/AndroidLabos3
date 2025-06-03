@@ -1,8 +1,6 @@
-package hr.tvz.android.fragmentistjepanovic
+package hr.tvz.android.fragmentistjepanovic.fragment
 
 import android.content.Context
-import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,14 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
-import hr.tvz.android.fragmentistjepanovic.model.Database
+import hr.tvz.android.fragmentistjepanovic.adapter.InstrumentAdapter
+import hr.tvz.android.fragmentistjepanovic.R
 import hr.tvz.android.fragmentistjepanovic.model.Instrument
-import hr.tvz.android.fragmentistjepanovic.model.InstrumentDao
 
 class ListFragment : Fragment() {
-    private lateinit var db: Database
-    private lateinit var instrumentDao: InstrumentDao
     private lateinit var recyclerView: RecyclerView
     private lateinit var instrumentsList: ArrayList<Instrument>
     private lateinit var callback: OnInstrumentSelectedListener
@@ -36,28 +31,18 @@ class ListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        db = Room.databaseBuilder(requireContext().applicationContext, Database::class.java, "instruments")
-            .allowMainThreadQueries()
-            .build()
-
-        instrumentDao = db.instrumentDao()
-
-        if (instrumentDao.getAll().isEmpty()) {
-            insertAll()
-        }
-
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        instrumentsList = ArrayList(instrumentDao.getAll())
+        instrumentsList = ArrayList<Instrument>()
 
         recyclerView = view.findViewById(R.id.instrumentsList)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = InstrumentAdapter(view.context ,instrumentsList) { instrument ->
+        recyclerView.adapter = InstrumentAdapter(view.context, instrumentsList) { instrument ->
             callback.onInstrumentSelected(instrument)
         }
     }
@@ -86,16 +71,5 @@ class ListFragment : Fragment() {
             "organ",
             "violin",
         )
-
-        for (i in instrumentNamesList.indices) {
-            val instrument = Instrument(
-                id = null,
-                name = instrumentNamesList[i],
-                url = instrumentUrlsList[i],
-                image = instrumentImagesList[i]
-            )
-
-            instrumentDao.insertOne(instrument)
-        }
     }
 }

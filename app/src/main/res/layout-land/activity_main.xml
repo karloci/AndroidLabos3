@@ -20,14 +20,14 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
-            android:name="hr.tvz.android.fragmentistjepanovic.ListFragment"
+            android:name="hr.tvz.android.fragmentistjepanovic.fragment.ListFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView2"
-            android:name="hr.tvz.android.fragmentistjepanovic.DetailsFragment"
+            android:name="hr.tvz.android.fragmentistjepanovic.fragment.DetailsFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2" />

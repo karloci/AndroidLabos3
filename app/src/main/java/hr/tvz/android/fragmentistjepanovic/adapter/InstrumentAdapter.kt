@@ -1,4 +1,4 @@
-package hr.tvz.android.fragmentistjepanovic
+package hr.tvz.android.fragmentistjepanovic.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
+import hr.tvz.android.fragmentistjepanovic.R
 import hr.tvz.android.fragmentistjepanovic.model.Instrument
 
 class InstrumentAdapter(
@@ -26,7 +27,7 @@ class InstrumentAdapter(
     override fun onBindViewHolder(holder: InstrumentViewHolder, position: Int) {
         val currentInstrument = instrumentsList[position]
 
-        val resId = context.resources.getIdentifier(currentInstrument.image, "drawable", context.packageName)
+        val resId = context.resources.getIdentifier(currentInstrument.imageUrl, "drawable", context.packageName)
 
         holder.instrumentImage.setImageResource(resId)
         holder.instrumentName.text = currentInstrument.name
