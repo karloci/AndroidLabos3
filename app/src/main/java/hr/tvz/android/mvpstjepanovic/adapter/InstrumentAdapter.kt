@@ -1,4 +1,4 @@
-package hr.tvz.android.fragmentistjepanovic.adapter
+package hr.tvz.android.mvpstjepanovic.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
-import hr.tvz.android.fragmentistjepanovic.R
-import hr.tvz.android.fragmentistjepanovic.model.Instrument
+import hr.tvz.android.mvpstjepanovic.R
+import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
 
 class InstrumentAdapter(
     private val context: Context,

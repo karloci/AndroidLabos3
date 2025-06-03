@@ -1,4 +1,4 @@
-package hr.tvz.android.fragmentistjepanovic.fragment
+package hr.tvz.android.mvpstjepanovic.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import hr.tvz.android.fragmentistjepanovic.adapter.InstrumentAdapter
-import hr.tvz.android.fragmentistjepanovic.R
-import hr.tvz.android.fragmentistjepanovic.model.Instrument
+import hr.tvz.android.mvpstjepanovic.adapter.InstrumentAdapter
+import hr.tvz.android.mvpstjepanovic.R
+import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
 
 class ListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView

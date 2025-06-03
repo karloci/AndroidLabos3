@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "hr.tvz.android.fragmentistjepanovic"
+    namespace = "hr.tvz.android.mvpstjepanovic"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "hr.tvz.android.fragmentistjepanovic"
+        applicationId = "hr.tvz.android.mvpstjepanovic"
         minSdk = 21
         targetSdk = 35
         versionCode = 1

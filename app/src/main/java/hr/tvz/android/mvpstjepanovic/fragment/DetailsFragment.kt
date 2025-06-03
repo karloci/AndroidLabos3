@@ -1,4 +1,4 @@
-package hr.tvz.android.fragmentistjepanovic.fragment
+package hr.tvz.android.mvpstjepanovic.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,8 +10,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
-import hr.tvz.android.fragmentistjepanovic.R
-import hr.tvz.android.fragmentistjepanovic.model.Instrument
+import hr.tvz.android.mvpstjepanovic.R
+import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
 
 class DetailsFragment : Fragment() {
     override fun onCreateView(

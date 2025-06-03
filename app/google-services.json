@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:644837167099:android:b6c9e884e8890fddda855e",
         "android_client_info": {
-          "package_name": "hr.tvz.android.fragmentistjepanovic"
+          "package_name": "hr.tvz.android.mvpstjepanovic"
         }
       },
       "oauth_client": [],

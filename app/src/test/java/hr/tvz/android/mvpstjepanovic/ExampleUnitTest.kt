@@ -1,4 +1,4 @@
-package hr.tvz.android.fragmentistjepanovic
+package hr.tvz.android.mvpstjepanovic
 
 import org.junit.Test
 

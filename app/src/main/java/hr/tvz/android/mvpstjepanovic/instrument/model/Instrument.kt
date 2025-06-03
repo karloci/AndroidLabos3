@@ -1,4 +1,4 @@
-package hr.tvz.android.fragmentistjepanovic.model
+package hr.tvz.android.mvpstjepanovic.instrument.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

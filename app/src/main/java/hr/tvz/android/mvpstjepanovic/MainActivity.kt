@@ -1,4 +1,4 @@
-package hr.tvz.android.fragmentistjepanovic
+package hr.tvz.android.mvpstjepanovic
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -6,10 +6,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import hr.tvz.android.fragmentistjepanovic.fragment.DetailsFragment
-import hr.tvz.android.fragmentistjepanovic.fragment.ListFragment
-import hr.tvz.android.fragmentistjepanovic.model.Instrument
+import dagger.hilt.android.AndroidEntryPoint
+import hr.tvz.android.mvpstjepanovic.fragment.DetailsFragment
+import hr.tvz.android.mvpstjepanovic.fragment.ListFragment
+import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ListFragment.OnInstrumentSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
