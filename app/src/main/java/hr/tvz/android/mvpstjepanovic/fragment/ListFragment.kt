@@ -10,7 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import hr.tvz.android.mvpstjepanovic.adapter.InstrumentAdapter
+import hr.tvz.android.mvpstjepanovic.utils.adapter.InstrumentAdapter
 import hr.tvz.android.mvpstjepanovic.R
 import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
 import hr.tvz.android.mvpstjepanovic.instrument.viewmodel.InstrumentViewModel

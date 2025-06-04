@@ -1,4 +1,4 @@
-package hr.tvz.android.mvpstjepanovic.adapter
+package hr.tvz.android.mvpstjepanovic.utils.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

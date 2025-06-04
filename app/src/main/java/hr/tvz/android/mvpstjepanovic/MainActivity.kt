@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import dagger.hilt.android.AndroidEntryPoint
+import hr.tvz.android.mvpstjepanovic.utils.audio.AudioPlayer
 import hr.tvz.android.mvpstjepanovic.fragment.DetailsFragment
 import hr.tvz.android.mvpstjepanovic.fragment.ListFragment
 import hr.tvz.android.mvpstjepanovic.instrument.model.Instrument
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), ListFragment.OnInstrumentSelectedListe
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        AudioPlayer.play(this, R.raw.song)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
